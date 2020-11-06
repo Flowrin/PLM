@@ -13,14 +13,14 @@ router.get('/todos', (ctx) => {
   ctx.response.body = { todos: todos };
 });
 
-router.post('/todos', async (ctx) => {
+router.post('/todos', async (ctx): Promise<void> => {
   const data = await ctx.request.body();
   const newTodo: Todo = {
     id: new Date().toISOString(),
-    text: data.value.text,
+    text: data.value.text ,
   };
 
-  todos.push(newTodo);
+  todos.push(newTodo);a
 
   ctx.response.body = { message: 'Created todo!', todo: newTodo };
 });
